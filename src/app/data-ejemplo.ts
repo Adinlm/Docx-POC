@@ -1,10 +1,15 @@
 
-
+export const datos = [{
+    nombre: "Luis Ortega",
+    rut: "14145903-1",
+    medico:"Paulina Arce Escobar"
+  }
+]
 
 /*export const experiences = [
   {
     isCurrent: true,
-    summary: "Full-stack developer working with Angular and Java. Working for the iShares platform",
+    c: "Full-stack developer working with Angular and Java. Working for the iShares platform",
     title: "Associate Software Developer",
     startDate: {
       month: 11,

@@ -9,46 +9,187 @@ import {
   BorderStyle,
   TabStopPosition,
   TabStopType,
-  TextRun
+  TextRun,
+  ImageRun,
+  Table,
+  TableRow,
+  TableCell
 } from "docx";
 
 
+
+
+
 export class GeneradorDocs {
-  public crearParrafos(): Document {
+  public crearParrafos([datos]): Document {
     const documento = new Document({
       sections: [{
         children: [
           new Paragraph({
-            children: [new TextRun("Soy un titulo")],
-            heading: HeadingLevel.TITLE
+            children: [
+              new ImageRun({
+                data: ("./logo.png"),//problema con la ruta?
+                transformation: {
+                  width: 100,
+                  height: 100,
+                },
+              }),
+
+            ],
           }),
           new Paragraph({
-            children: [new TextRun("Soy un parrafo con shading")],
-            shading: {
-              type: ShadingType.REVERSE_DIAGONAL_STRIPE,
-              color: "00FFFF",
-              fill: "FF0000",
+            children: [
+              new TextRun({
+                text: "SERVICIO DE ANATOMIA PATOLOGICA",
+                bold: true, color: "000000"
+              })],
+            heading: HeadingLevel.HEADING_3,
+            alignment: AlignmentType.CENTER,
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "Av.Manquehue Norte 1410 - Piso-2 ", color: "000000"
+              }),
+              new TextRun({
+                text: "Fonos:225861641 o 225861642 ", break: 1, color: "000000"
+              })
+            ],
+            heading: HeadingLevel.HEADING_6,
+            alignment: AlignmentType.CENTER,
+          }),
+
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "Paciente: "   ,
+              }),
+              new TextRun({
+                text: "RUT/PASAPORTE: 14145903-1", break: 1
+              }),
+              new TextRun({
+                text: "Medico Solicitante: Paulina Arce Escobar      Fecha de Nacimiento: 19/07/1990      Edad: 31 ", break: 1,
+              }),
+              new TextRun({
+                text: "Servicio Solicitante: GASTROENTEROLOGIA", break: 1
+              }),
+              new TextRun({
+                text: "Fecha de recepción: 20/11/2021              Fecha de informe: 22/11/2021", break: 1
+              }),
+            ],
+            spacing: {
+              before: 200,
+            },
+            thematicBreak: true,
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "Diagnóstico Clínico/Antecedentes:", bold: true
+              }),
+              new TextRun({
+                text: "Obs esófago de barret.", break: 1
+              }),
+            ],
+            spacing: {
+              before: 200,
             },
           }),
-          
           new Paragraph({
-            children: [new TextRun("Soy un parrafo con bordes")],
-            border: {
-              top: {
-                color: "auto",
-                space: 1,
-                style: BorderStyle.SINGLE,
-                size: 6,
-              },
-              bottom: {
-                color: "auto",
-                space: 1,
-                style: BorderStyle.SINGLE,
-                size: 6,
-              },
-            }, 
+            children: [
+              new TextRun({
+                text: "Muestras enviadas:", bold: true
+              }),
+              new TextRun({
+                text: "Esófago, Biopsia endoscópica, Ma 1 M6 biopsias de lenguetas de mucosa de aspecto gástrico a 4 cm de la constricción hiatal", break: 1
+              }),
+            ],
+            spacing: {
+              before: 200,
+            },
           }),
-          
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "Examen Macroscópico:", bold: true
+              })
+            ],
+            spacing: {
+              before: 200,
+              after: 200
+            },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "En formalina, 7 fragmentos de tejido pardo-grisáceo de 2 a 4 mm, distribuidos en los casilleros n°1 a n°6."
+              })
+            ],
+            spacing: {
+              before: 200,
+              after: 200
+            },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: "Examen Microscópico:", bold: true
+              })
+            ],
+            spacing: {
+              before: 200,
+              after: 200
+            },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text:
+                  "Los fragmentos examinados corresponden a epitelio escamoso con acantosis, papilomatosis, espongiosis con exocitosis de linfocitos y de algunos granulocitos eosinófilos."
+              })
+            ],
+            spacing: {
+              before: 200,
+              after: 200
+            },
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text:
+                  "Diagnóstico:", bold: true
+              }),
+              new TextRun({
+                text:
+                  "Hallazgos compatibles con ESOFAGITIS POR REFLUJO", break: 1
+              })
+            ],
+            spacing: {
+              before: 200,
+            },
+          }),
+          new Paragraph({
+            text: "esofagitis",
+            bullet: {
+              level: 0 //items del listado
+            }
+
+          }),
+          new Paragraph({
+            text: "epitelio",
+            bullet: {
+              level: 0 //items del listado
+            }
+
+          }),
+          new Paragraph({
+            text: "pardo-grisáceo",
+            bullet: {
+              level: 0 //items del listado
+            }
+
+          }),
+
         ],
       }],
     })
@@ -56,9 +197,23 @@ export class GeneradorDocs {
 
     return documento;
   }
+}
+  /*	
+  public createContact(
+    name: string,
+    id:string,
+    medic:string,
+  ):string{
+      const name =
 
+    
+    return `${name};
+
+  }
 
 }
+*/
+
 
 
 

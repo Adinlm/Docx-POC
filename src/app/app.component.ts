@@ -4,6 +4,7 @@ import saveAs from 'file-saver';
 
 //import { experiences, education, skills, achievements } from "./data-ejemplo";
 //import { DocumentCreator } from "./generador-ejemplo"
+import { datos } from "./data-ejemplo";
 import { GeneradorDocs } from "./generador-ejemplo"
 
 
@@ -27,7 +28,9 @@ export class AppComponent {
 
     //crea un nuevo documento generado por Documentcreator
     const documentCreator = new GeneradorDocs();
-    const doc = documentCreator.crearParrafos();
+    const doc = documentCreator.crearParrafos([
+      datos,
+    ]);
     /*
     const documentCreator = new DocumentCreator();
     const doc = documentCreator.create([
@@ -47,13 +50,21 @@ export class AppComponent {
   descargarDocumento64() {
 
     const documentCreator = new GeneradorDocs();
-    const doc = documentCreator.crearParrafos();
+    const doc = documentCreator.crearParrafos([
+      datos,
+    ]);
 
 
     Packer.toBase64String(doc).then((string) => {
       console.log("Soy el string base64: ",string);
     });
   }
+
+  onKey(event) {
+    const inputValue = event.target.value;
+    console.log(inputValue)
+  }
+
 
   
 }

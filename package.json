@@ -22,6 +22,7 @@
     "bootstrap": "^5.1.3",
     "docx": "^7.2.0",
     "file-saver": "^2.0.5",
+    "image-to-base64": "^2.2.0",
     "jquery": "^3.6.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

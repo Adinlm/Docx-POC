@@ -4,8 +4,8 @@ import saveAs from 'file-saver';
 
 //import { experiences, education, skills, achievements } from "./data-ejemplo";
 //import { DocumentCreator } from "./generador-ejemplo"
-import { datos } from "./data-ejemplo";
-import { GeneradorDocs } from "./generador-ejemplo"
+import { datos, education } from "./data-ejemplo";
+import { GeneradorDocs,GeneradorDocsJson } from "./generador-ejemplo"
 
 
 @Component({
@@ -20,17 +20,13 @@ export class AppComponent {
   }
 
   ngOnInit() {
-
   }
 
 
   descargarDocumento() {
-
     //crea un nuevo documento generado por Documentcreator
     const documentCreator = new GeneradorDocs();
-    const doc = documentCreator.crearParrafos([
-      datos,
-    ]);
+    const doc = documentCreator.crearParrafos();
     /*
     const documentCreator = new DocumentCreator();
     const doc = documentCreator.create([
@@ -50,13 +46,24 @@ export class AppComponent {
   descargarDocumento64() {
 
     const documentCreator = new GeneradorDocs();
-    const doc = documentCreator.crearParrafos([
+    const doc = documentCreator.crearParrafos();
+
+
+    Packer.toBase64String(doc).then((string) => {
+      console.log("Soy el string base64: ", string);
+    });
+  }
+
+  descargarDocumentoJson() {
+
+    const documentCreator = new GeneradorDocsJson();
+    const doc = documentCreator.crearParrafosJson([
       datos,
     ]);
 
 
-    Packer.toBase64String(doc).then((string) => {
-      console.log("Soy el string base64: ",string);
+    Packer.toBlob(doc).then(blob => {
+      saveAs(blob, "ejemplojson.docx");
     });
   }
 
@@ -66,5 +73,5 @@ export class AppComponent {
   }
 
 
-  
+
 }

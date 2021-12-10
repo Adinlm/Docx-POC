@@ -1,12 +1,14 @@
 
-export const datos = [{
+export const datos = [
+  {
     nombre: "Luis Ortega",
     rut: "14145903-1",
     medico:"Paulina Arce Escobar"
   }
 ]
 
-/*export const experiences = [
+/*
+export const datos = [
   {
     isCurrent: true,
     c: "Full-stack developer working with Angular and Java. Working for the iShares platform",
@@ -71,7 +73,7 @@ export const datos = [{
     },
   },
 ];
-
+*/
 export const education = [
   {
     degree: "Master of Science (MSc)",
@@ -122,5 +124,5 @@ export const achievements = [
     name: "Oracle Certified Expert",
   },
 ];
-*/
+
 
